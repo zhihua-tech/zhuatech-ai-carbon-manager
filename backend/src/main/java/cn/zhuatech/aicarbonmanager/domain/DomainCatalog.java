@@ -2,21 +2,51 @@
 package cn.zhuatech.aicarbonmanager.domain;
 import org.springframework.stereotype.Component;
 import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Component
 public class DomainCatalog {
     private final Map<String, WorkflowAction> actions = new LinkedHashMap<>();
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public DomainCatalog() {
         actions.put("CALCULATE", new WorkflowAction("CALCULATE", "提交碳盘查", List.of("草稿"), "待核证", "OPERATOR"));
         actions.put("VERIFY", new WorkflowAction("VERIFY", "批准盘查结果", List.of("待核证"), "待披露", "ADMIN"));
         actions.put("PUBLISH", new WorkflowAction("PUBLISH", "发布碳盘查报告", List.of("待披露"), "已披露", "ADMIN"));
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String systemName() { return "知华科技AI碳核算与减排管理系统"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String scene() { return "组织边界、活动数据、排放因子、范围一二三、AI异常、碳盘查、目标、减排情景、核证与披露"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String initialStatus() { return "草稿"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String partyLabel() { return "组织/设施/排放源"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String amountLabel() { return "碳成本"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String quantityLabel() { return "碳排放量"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public String dueLabel() { return "盘查与披露期限"; }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public List<ModuleDefinition> modules() { return List.of(
             new ModuleDefinition("BOUNDARY", "组织与运营边界", "管理法人、设施、控制权和盘查范围"),
             new ModuleDefinition("ACTIVITY", "活动数据", "采集能源、燃料、冷媒、物流、采购和差旅数据"),
@@ -28,7 +58,16 @@ public class DomainCatalog {
             new ModuleDefinition("VERIFICATION", "核证管理", "管理抽样、证据、调整和独立核证"),
             new ModuleDefinition("DISCLOSURE", "披露与审计", "生成盘查报告并保留方法学和数据血缘")
         ); }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public Map<String, WorkflowAction> actions() { return Collections.unmodifiableMap(actions); }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ModuleDefinition(String code,String name,String description) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record WorkflowAction(String code,String label,List<String> from,String to,String requiredRole) {}
 }

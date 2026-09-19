@@ -8,9 +8,15 @@ import org.springframework.stereotype.Service;
 import java.math.*;
 import java.util.*;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class EmissionInventoryService {
     private static final Set<String> SCOPES=Set.of("SCOPE_1","SCOPE_2_LOCATION","SCOPE_2_MARKET","SCOPE_3");
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public InventoryResult calculate(@Valid InventoryRequest request) {
         Set<String> lineIds=new HashSet<>();
         Map<String,BigDecimal> totals=new LinkedHashMap<>(); SCOPES.forEach(scope->totals.put(scope,BigDecimal.ZERO));
@@ -38,17 +44,35 @@ public class EmissionInventoryService {
         return new InventoryResult(status,totals,all,reductions.setScale(3,RoundingMode.HALF_UP),projected,targetGap,coverage,uncertainty,lines,warnings);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record InventoryRequest(@NotEmpty List<@Valid ActivityLine> activities,
                                    List<@Valid ReductionProject> reductionProjects,
                                    @NotNull @DecimalMin("0") BigDecimal targetTco2e) {
+        /**
+         * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+         */
         public InventoryRequest { reductionProjects=reductionProjects==null?List.of():List.copyOf(reductionProjects); }
     }
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ActivityLine(@NotBlank String lineId,@NotBlank String sourceName,@NotBlank String scope,
                                @NotNull @DecimalMin("0") BigDecimal activityAmount,
                                @NotNull @DecimalMin("0") BigDecimal factorKgCo2ePerUnit,@NotBlank String factorVersion,
                                @Min(0) @Max(100) int uncertaintyPercent,boolean evidenceAttached) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ReductionProject(@NotBlank String projectCode,@NotNull @DecimalMin("0") BigDecimal expectedReductionTco2e) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record CalculatedLine(String lineId,String sourceName,String scope,BigDecimal emissionTco2e,String factorVersion,boolean evidenceAttached) {}
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record InventoryResult(String status,Map<String,BigDecimal> scopeTotalsTco2e,BigDecimal grossEmissionTco2e,
                                   BigDecimal expectedReductionTco2e,BigDecimal projectedEmissionTco2e,BigDecimal targetGapTco2e,
                                   int evidenceCoveragePercent,BigDecimal weightedUncertaintyPercent,List<CalculatedLine> lines,List<String> warnings) {}
