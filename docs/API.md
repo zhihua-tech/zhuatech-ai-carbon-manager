@@ -16,12 +16,17 @@
 | GET | `/records/export.csv` | 导出 UTF-8 CSV |
 | GET | `/sla-summary` | SLA、逾期、风险和人员工作量 |
 | POST | `/domain/decision` | 执行AI碳核算与减排管理系统专属领域规则 |
+| POST | `/domain/emission-inventory` | 核算范围排放、凭证覆盖、不确定性、减排效果和目标差距 |
 | GET/POST | `/enterprise/controls` | 企业控制项查询与幂等创建 |
 | POST | `/enterprise/controls/{id}/submit` | 提交复核 |
 | POST | `/admin/enterprise/controls/{id}/review` | 管理员审批或驳回 |
 | POST | `/enterprise/controls/{id}/documents` | 登记附件哈希及存储元数据 |
 | POST | `/enterprise/controls/{id}/complete` | 凭证完整后办结 |
 | POST | `/admin/enterprise/controls/{id}/sync` | 登记外部系统回执 |
+
+## 碳排放清册
+
+`/domain/emission-inventory` 接收活动数据、排放因子与版本、核算范围、凭证和减排项目，返回分范围排放、证据覆盖率、加权不确定性及目标差距。
 
 ## 领域决策字段
 
